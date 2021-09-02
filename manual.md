@@ -33,7 +33,6 @@
 - [**Modelo Conceptual:**](#modelo-conceptual)
   - [**🌍 CONTINENT:**](#-continent)
   - [**🗺️ COUNTRY:**](#️-country)
-  - [**✔️ DAY_REGISTER:**](#️-day_register)
   - [**📈 CASE_REGISTER:**](#-case_register)
   - [**💀 DEATH_REGISTER:**](#-death_register)
   - [**🚑 INTENSIVE_PATIENTS:**](#-intensive_patients)
@@ -62,7 +61,7 @@
 Explicación de las entidades y sus atributos:
 ## **🌍 CONTINENT:**  
 Es una entidad que se encarga de almacenar los distintos continentes que se registren durante el proceso de análisis de COVID-19.
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -72,18 +71,18 @@ Es una entidad que se encarga de almacenar los distintos continentes que se regi
     <tbody>
         <tr>
             <td align="left"><code>code</code></td>
-            <td align="left"></td>
+            <td align="left">Código único que identifica a cada continente</td>
         </tr>
         <tr>
             <td align="left"><code>name</code></td>
-            <td align="left"></td>
+            <td align="left">Continente de la ubicación geográfica</td>
         </tr>
     </tbody>
 </table>  
 
 ## **🗺️ COUNTRY:**  
 Entidad que almacena el iso_code y el nombre de un país en específico.
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -102,11 +101,10 @@ Entidad que almacena el iso_code y el nombre de un país en específico.
     </tbody>
 </table>
 
-## **✔️ DAY_REGISTER:**
 
-Es la entidad principal, por esta pasa toda la información ya que en ella se concentra el campo principal de cada registro diario, el cual es la fecha.  
-
-<table>
+## **📈 CASE_REGISTER:**  
+Entidad encargada de registrar la información relacionada con los casos de COVID-19 en determinada fecha.
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -116,29 +114,8 @@ Es la entidad principal, por esta pasa toda la información ya que en ella se co
     <tbody>
         <tr>
             <td align="left"><code>date</code></td>
-            <td align="left">Fecha en la cual se están analizando los datos.</td>
-        </tr>
-        <tr>
-            <td align="left"><code>reproduction_rate</code></td>
-            <td align="left">Estimación en tiempo real de la tasa de reproducción efectiva de COVID-19.</td>
-        </tr>
-        <tr>
-            <td align="left"><code>positive_rate</code></td>
-            <td align="left">Proporción de pruebas de COVID-19 que son positivas, dada como un promedio móvil de 7 días</td>
-        </tr>
-    </tbody>
-</table>
-
-## **📈 CASE_REGISTER:**  
-Entidad encargada de registrar la información relacionada con los casos de COVID-19 en determinada fecha.
-<table>
-    <thead>
-        <tr>
-            <th align="left">Atributo</th>
-            <th align="left">Descripción</th>
-        </tr>
-    </thead>
-    <tbody>
+            <td align="left">Fecha de análisis</td>
+        </tr>    
         <tr>
             <td align="left"><code>new_cases</code></td>
             <td align="left">Nuevos casos confirmados de COVID-19</td>
@@ -170,7 +147,7 @@ Entidad encargada de registrar la información relacionada con los casos de COVI
 ## **💀 DEATH_REGISTER:**
 Entidad encargada de registrar la información relacionada con las muertes que ocasionó el COVID-19 en determinada fecha.
 
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -178,6 +155,10 @@ Entidad encargada de registrar la información relacionada con las muertes que o
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td align="left"><code>date</code></td>
+            <td align="left">Fecha de análisis</td>
+        </tr> 
         <tr>
             <td align="left"><code>new_deaths</code></td>
             <td align="left">Nuevas muertes atribuidas al COVID-19</td>
@@ -208,7 +189,7 @@ Entidad encargada de registrar la información relacionada con las muertes que o
 ## **🚑 INTENSIVE_PATIENTS:**  
 Entidad que registra información sobre los pacientes que están en unidades de cuidados intensivos, como sus admisiones semanales o indicadores más generales como: weekly_icu_admissions_per_million.
 
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -216,6 +197,10 @@ Entidad que registra información sobre los pacientes que están en unidades de 
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td align="left"><code>date</code></td>
+            <td align="left">Fecha de análisis</td>
+        </tr>     
         <tr>
             <td align="left"><code>icu_patients</code></td>
             <td align="left">Número de pacientes con COVID-19 en unidades de cuidados intensivos (UCI) en un día determinado</td>
@@ -237,7 +222,7 @@ Entidad que registra información sobre los pacientes que están en unidades de 
 
 ## **🏥 HOSPITALIZED:**  
 Entidad encargada de almacenar información de pacientes que estuvieron en un hospital en determinado día, así como indicadores que comparan datos por millón de personas.
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -245,6 +230,10 @@ Entidad encargada de almacenar información de pacientes que estuvieron en un ho
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td align="left"><code>date</code></td>
+            <td align="left">Fecha de análisis</td>
+        </tr>     
         <tr>
             <td align="left"><code>hosp_patients</code></td>
             <td align="left">Número de pacientes con COVID-19 en el hospital en un día determinado</td>
@@ -267,7 +256,7 @@ Entidad encargada de almacenar información de pacientes que estuvieron en un ho
 
 ## **📓 TEST_REGISTER:**
 Entidad encargada de almacenar información referente a las pruebas de COVID-19 realizadas a personas, como pruebas por día o también el total acumulado de pruebas realizadas para determinado país.
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -275,6 +264,10 @@ Entidad encargada de almacenar información referente a las pruebas de COVID-19 
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td align="left"><code>date</code></td>
+            <td align="left">Fecha de análisis</td>
+        </tr>     
         <tr>
             <td align="left"><code>new_tests</code></td>
             <td align="left">Nuevas pruebas para COVID-19 (solo calculadas para días consecutivos)</td>
@@ -302,13 +295,17 @@ Entidad encargada de almacenar información referente a las pruebas de COVID-19 
         <tr>
             <td align="left"><code>tests_per_case</code></td>
             <td align="left">Pruebas realizadas por cada nuevo caso confirmado de COVID-19, dado como un promedio móvil de 7 días (esto es el inverso de positive_rate)</td>
-        </tr>          
+        </tr>
+        <tr>
+            <td align="left"><code>positive_rate</code></td>
+            <td align="left">La proporción de pruebas de COVID-19 que son positivas, dada como un promedio móvil de 7 días (esto es lo contrario de las pruebas por caso)</td>
+        </tr>                  
     </tbody>
 </table>
 
 ## **📜 TEST_UNIT:**
 Entidad creada con el objetivo de almacenar un catálogo del tipo de pruebas unitarias que se relizan.
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -329,7 +326,7 @@ Entidad creada con el objetivo de almacenar un catálogo del tipo de pruebas uni
 
 ## **💉 VACCINATION:**
 Entidad que se encarga de almacenar toda información relacionada con las vacunas de COVID-19 administradas, entre algunos campos que registra están: total de dosis administradas, personas que recibieron por lo menos una dosis, entre otros. 
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -337,6 +334,10 @@ Entidad que se encarga de almacenar toda información relacionada con las vacuna
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td align="left"><code>date</code></td>
+            <td align="left">Fecha de análisis</td>
+        </tr>     
         <tr>
             <td align="left"><code>total_vaccinations</code></td>
             <td align="left">Número total de dosis de vacuna COVID-19 administradas</td>
@@ -386,7 +387,7 @@ Entidad que se encarga de almacenar toda información relacionada con las vacuna
 
 ## **📊 COUNTRY_DETAIL:**
 Entidad que almacena campos más generales de la información que puede necesitar determinado país, como su población, experanza de vida y algunos índices referentes al análisis del COVID-19.
-<table>
+<table table border="3">
     <thead>
         <tr>
             <th align="left">Atributo</th>
@@ -394,6 +395,14 @@ Entidad que almacena campos más generales de la información que puede necesita
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td align="left"><code>date</code></td>
+            <td align="left">Fecha de análisis</td>
+        </tr> 
+        <tr>
+            <td align="left"><code>reproduction_rate</code></td>
+            <td align="left">Estimación en tiempo real de la tasa de reproducción efectiva (R) de COVID-19</td>
+        </tr>             
         <tr>
             <td align="left"><code>stringency_index</code></td>
             <td align="left">Índice de rigurosidad de respuesta del gobierno: medida compuesta basada en 9 indicadores de respuesta que incluyen cierres de escuelas, cierres de lugares de trabajo y prohibiciones de viaje, reescalado a un valor de 0 a 100 (100 = respuesta más estricta)</td>
@@ -464,9 +473,215 @@ Entidad que almacena campos más generales de la información que puede necesita
         </tr>
     </tbody>
 </table>
+</br>
+</br>
 
+# **Modelo Lógico**  
 
-# **Modelo Lógico**
+<table border="3">
+    <caption style="background: #65676B; color: white;">CONTINENT</caption>
+    <thead>
+        <tr style="background: #86324C;">
+            <td  align="left">COLUMNAS</td>
+            <td align="left">code</td>
+            <td align="left">name</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left">NN</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">1</td>
+            <td align="left">Asia</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2</td>
+            <td align="left">Europe</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">3</td>
+            <td align="left">Africa</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">4</td>
+            <td align="left">North America</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">5</td>
+            <td align="left">South America</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">6</td>
+            <td align="left">Oceania</td>
+        </tr>        
+    </tbody>
+</table>
+
+</br>
+
+<table border="3">
+    <caption style="background: #65676B; color: white;">COUNTRY</caption>
+    <thead>
+        <tr style="background: #86324C;">
+            <td  align="left">COLUMNAS</td>
+            <td align="left">iso_code</td>
+            <td align="left">location</td>
+            <td align="left">code (CONTINENT)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left">NN</td>
+            <td align="left">FK</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">HUN</td>
+            <td align="left">Hungary</td>
+            <td align="left">2</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">HKG</td>
+            <td align="left">Hong Kong</td>
+            <td align="left">1</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">BHS</td>
+            <td align="left">Bahamas</td>
+            <td align="left">4</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">ZWE</td>
+            <td align="left">Zimbabwe</td>
+            <td align="left">3</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">SLB</td>
+            <td align="left">Solomon Islands</td>
+            <td align="left">6</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">ESP</td>
+            <td align="left">Spain</td>
+            <td align="left">2</td>
+        </tr>        
+    </tbody>
+</table>
+</br>
+
+</br>
+
+<table border="3">
+    <caption style="background: #65676B; color: white;">CASE_REGISTER</caption>
+    <thead>
+        <tr style="background: #86324C;">
+            <td  align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">new_cases</td>
+            <td align="left">new_cases_smoothed</td>
+            <td align="left">new_cases_per_million</td>
+            <td align="left">new_cases_smoothed_per_million</td>
+            <td align="left">total_cases</td>
+            <td align="left">total_cases_per_million</td>
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left">NN</td>
+            <td align="left"></td>
+            <td align="left">NN</td>
+            <td align="left"></td>
+            <td align="left">NN</td>
+            <td align="left">NN</td>
+            <td align="left">FK</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left">0</td>
+            <td align="left">1.143</td>
+            <td align="left">0</td>
+            <td align="left">0.151</td>
+            <td align="left">8</td>
+            <td align="left">1.059</td>
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left">7</td>
+            <td align="left">4.286</td>
+            <td align="left">0.727</td>
+            <td align="left">0.445</td>
+            <td align="left">39</td>
+            <td align="left">4.048</td>
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left">1</td>
+            <td align="left">2.143</td>
+            <td align="left">2.519</td>
+            <td align="left">5.399</td>
+            <td align="left">29</td>
+            <td align="left">73.064</td>
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left">0</td>
+            <td align="left">0.429</td>
+            <td align="left">0</td>
+            <td align="left">0.609</td>
+            <td align="left">3</td>
+            <td align="left">4.261</td>  
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left">16353</td>
+            <td align="left">7423</td>
+            <td align="left">349.833</td>
+            <td align="left">158.797</td>
+            <td align="left">3540430</td>
+            <td align="left">75738.882</td>
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left">754</td>
+            <td align="left">580.429</td>
+            <td align="left">49.96</td>
+            <td align="left">38.459</td>
+            <td align="left">119508</td>
+            <td align="left">7918.543</td>
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
 
 # **Modelo Físico**
 
