@@ -42,6 +42,16 @@
   - [**💉 VACCINATION:**](#-vaccination)
   - [**📊 COUNTRY_DETAIL:**](#-country_detail)
 - [**Modelo Lógico**](#modelo-lógico)
+    - [**CONTINENT**](#continent)
+    - [**COUNTRY**](#country)
+    - [**CASE_REGISTER**](#case_register)
+    - [**DEATH_REGISTER**](#death_register)
+    - [**INTENSIVE_PATIENTS**](#intensive_patients)
+    - [**HOSPITALIZED**](#hospitalized)
+    - [**TEST_UNIT**](#test_unit)
+    - [**TEST_REGISTER**](#test_register)
+    - [**VACCINATION**](#vaccination)
+    - [**COUNTRY_DETAIL**](#country_detail)
 - [**Modelo Físico**](#modelo-físico)
 - [**Glosario**](#glosario)
 
@@ -478,8 +488,9 @@ Entidad que almacena campos más generales de la información que puede necesita
 
 # **Modelo Lógico**  
 
+### **CONTINENT**
+
 <table border="3">
-    <caption style="background: #65676B; color: white;">CONTINENT</caption>
     <thead>
         <tr style="background: #86324C;">
             <td  align="left">COLUMNAS</td>
@@ -528,8 +539,9 @@ Entidad que almacena campos más generales de la información que puede necesita
 
 </br>
 
+### **COUNTRY**
+
 <table border="3">
-    <caption style="background: #65676B; color: white;">COUNTRY</caption>
     <thead>
         <tr style="background: #86324C;">
             <td  align="left">COLUMNAS</td>
@@ -587,8 +599,9 @@ Entidad que almacena campos más generales de la información que puede necesita
 
 </br>
 
+### **CASE_REGISTER**
+
 <table border="3">
-    <caption style="background: #65676B; color: white;">CASE_REGISTER</caption>
     <thead>
         <tr style="background: #86324C;">
             <td  align="left">COLUMNAS</td>
@@ -678,6 +691,762 @@ Entidad que almacena campos más generales de la información que puede necesita
             <td align="left">38.459</td>
             <td align="left">119508</td>
             <td align="left">7918.543</td>
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
+
+</br>
+
+### **DEATH_REGISTER**
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td  align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">new_deaths</td>
+            <td align="left">new_deaths_smoothed</td>
+            <td align="left">new_deaths_per_million</td>
+            <td align="left">new_deaths_smoothed_per_million</td>
+            <td align="left">total_deaths</td>
+            <td align="left">total_deaths_per_million</td>
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">FK</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left"></td>
+            <td align="left">0</td>
+            <td align="left"></td>
+            <td align="left">0</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left">0</td>
+            <td align="left">0.143</td>
+            <td align="left">0</td>
+            <td align="left">0.015</td>
+            <td align="left">1</td>
+            <td align="left">0.104</td>
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left">1</td>
+            <td align="left">0.714</td>
+            <td align="left">2.519</td>
+            <td align="left">1.8</td>
+            <td align="left">5</td>
+            <td align="left">12.597</td>
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left"></td>
+            <td align="left">0</td>
+            <td align="left"></td>
+            <td align="left">0</td>
+            <td align="left"></td>
+            <td align="left"></td>  
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left">77</td>
+            <td align="left">79.286</td>
+            <td align="left">1.647</td>
+            <td align="left">1.696</td>
+            <td align="left">78293</td>
+            <td align="left">1674.888</td>
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left">26</td>
+            <td align="left">38.286</td>
+            <td align="left">1.723</td>
+            <td align="left">2.537</td>
+            <td align="left">4073</td>
+            <td align="left">269.875</td>
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
+</br>
+
+### **INTENSIVE_PATIENTS**
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">icu_patients</td>
+            <td align="left">icu_patients_per_million</td>
+            <td align="left">weekly_icu_admissions</td>
+            <td align="left">weekly_icu_admissions_per_million</td>
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">FK</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left">2323</td>
+            <td align="left">49.695</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
+
+</br>
+
+
+### **HOSPITALIZED**
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">hosp_patients</td>
+            <td align="left">hosp_patients_per_million</td>
+            <td align="left">weekly_hosp_admissions</td>
+            <td align="left">weekly_hosp_admissions_per_million</td>
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">FK</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left">36</td>
+            <td align="left">3.737</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left">9747</td>
+            <td align="left">208.513</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
+
+</br>
+
+
+### **TEST_UNIT**
+
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td  align="left">COLUMNAS</td>
+            <td align="left">code</td>
+            <td align="left">name</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left">NN</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">1</td>
+            <td align="left">tests performed</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2</td>
+            <td align="left">units unclear</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">3</td>
+            <td align="left">samples tested</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">4</td>
+            <td align="left">people tested</td>
+        </tr>       
+    </tbody>
+</table>
+
+</br>
+
+### **TEST_REGISTER**
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">new_tests</td>
+            <td align="left">total_tests</td>
+            <td align="left">total_tests_per_thousan</td>
+            <td align="left">new_tests_per_thousand</td>
+            <td align="left">new_tests_smoothed</td>
+            <td align="left">new_tests_smoothed_per_thousand</td>
+            <td align="left">tests_per_case</td>      
+            <td align="left">positive_rate</td>
+            <td align="left">code (TEST_UNIT)</td>
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">FK</td>            
+            <td align="left">FK NN</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left">234</td>
+            <td align="left">1240</td>
+            <td align="left">0.129</td>
+            <td align="left">0.024</td>
+            <td align="left">146</td>
+            <td align="left">0</td>
+            <td align="left">34.1</td>
+            <td align="left">0.029</td>
+            <td align="left">1</td>            
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">122115</td>
+            <td align="left">2.612</td>
+            <td align="left">16.5</td>
+            <td align="left">0.061</td>   
+            <td align="left">1</td>
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left">7026</td>
+            <td align="left">1046386</td>
+            <td align="left">69.333</td>
+            <td align="left">0.466</td>
+            <td align="left">5496</td>
+            <td align="left">0.364</td>
+            <td align="left">9.5</td>
+            <td align="left">0.106</td>
+            <td align="left">1</td>            
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
+
+
+### **VACCINATION**
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">total_vaccinations</td>
+            <td align="left">people_vaccinated</td>
+            <td align="left">people_fully_vaccinated</td>
+            <td align="left">total_boosters</td>
+            <td align="left">new_vaccinations</td>
+            <td align="left">new_vaccinations_smoothed</td>
+            <td align="left">total_vaccinations_per_hundred</td>      
+            <td align="left">people_vaccinated_per_hundred</td>
+            <td align="left">people_fully_vaccinated_per_hundred</td>
+            <td align="left">total_boosters_per_hundred</td>
+            <td align="left">new_vaccinations_smoothed_per_million</td>
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left">FK NN</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left"></td>
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left">17430810</td>
+            <td align="left">12381213</td>
+            <td align="left">5202297</td>
+            <td align="left"></td>
+            <td align="left">252244</td>
+            <td align="left">348020</td>
+            <td align="left">37.29</td>
+            <td align="left">26.49</td>            
+            <td align="left">11.13</td>
+            <td align="left"></td>
+            <td align="left">7445</td>   
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left">56484</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">3743</td>
+            <td align="left">ZWE</td>       
+        </tr>                
+    </tbody>
+</table>
+
+
+### **COUNTRY_DETAIL**
+<table border="3">
+    <thead>
+        <tr style="background: #86324C;">
+            <td align="left">COLUMNAS</td>
+            <td align="left">date</td>
+            <td align="left">reproduction_rate</td>
+            <td align="left">stringency_index</td>
+            <td align="left">population</td>
+            <td align="left">population_density</td>
+            <td align="left">median_age</td>
+            <td align="left">aged_65_older</td>
+            <td align="left">aged_70_older</td>      
+            <td align="left">gdp_per_capita</td>
+            <td align="left">extreme_poverty</td>
+            <td align="left">cardiovasc_death_rate</td>
+            <td align="left">diabetes_prevalence</td>
+            <td align="left">female_smokers</td>
+            <td align="left">male_smokers</td>
+            <td align="left">handwashing_facilities</td>
+            <td align="left">hospital_beds_per_thousand</td>
+            <td align="left">life_expectancy</td>      
+            <td align="left">human_development_index</td>
+            <td align="left">excess_mortality</td>         
+            <td align="left">iso_code (COUNTRY)</td>
+        </tr>
+        <tr style="background: #0F224E">
+            <td align="left">RESTRICCIONES</td>
+            <td align="left">PK</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>                        
+            <td align="left">FK NN</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/01/28</td>
+            <td align="left"></td>
+            <td align="left">45.37</td>
+            <td align="left">7552800</td>
+            <td align="left">7039.714</td>
+            <td align="left">44.8</td>
+            <td align="left">16.303</td>
+            <td align="left">10.158</td>
+            <td align="left">56054.92</td>
+            <td align="left"></td>
+            <td align="left"></td>            
+            <td align="left">8.33</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">84.86</td>
+            <td align="left">0.949</td>
+            <td align="left"></td>            
+            <td align="left">HKG</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/03/16</td>
+            <td align="left"></td>
+            <td align="left">67.59</td>
+            <td align="left">9634162</td>
+            <td align="left">108.043</td>
+            <td align="left">43.4</td>
+            <td align="left">18.577</td>
+            <td align="left">11.976</td>
+            <td align="left">26777.561</td>            
+            <td align="left">0.5</td>
+            <td align="left">278.296</td>
+            <td align="left">7.55</td>
+            <td align="left">26.8</td>
+            <td align="left">34.8</td>
+            <td align="left"></td>
+            <td align="left">7.02</td>
+            <td align="left">76.88</td>
+            <td align="left">0.854</td>
+            <td align="left"></td>            
+            <td align="left">HUN</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/04/06</td>
+            <td align="left"></td>
+            <td align="left">96.3</td>
+            <td align="left">396914</td>
+            <td align="left">39.497</td>
+            <td align="left">34.3</td>
+            <td align="left">8.996</td>
+            <td align="left">5.2</td>
+            <td align="left">27717.847</td>            
+            <td align="left"></td>
+            <td align="left">235.954</td>
+            <td align="left">13.17</td>
+            <td align="left">3.1</td>
+            <td align="left">20.4</td>
+            <td align="left"></td>
+            <td align="left">2.9</td>
+            <td align="left">73.92</td>
+            <td align="left">0.814</td>
+            <td align="left"></td>            
+            <td align="left">BHS</td>
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2020/10/18</td>
+            <td align="left"></td>
+            <td align="left">43.52</td>
+            <td align="left">703995</td>
+            <td align="left">21.841</td>
+            <td align="left">20.8</td>
+            <td align="left">3.507</td>
+            <td align="left">2.043</td>
+            <td align="left">2205.923</td>            
+            <td align="left">25.1</td>
+            <td align="left">459.78</td>
+            <td align="left">18.68</td>
+            <td align="left"></td>
+            <td align="left"></td>
+            <td align="left">35.89</td>
+            <td align="left">1.4</td>
+            <td align="left">73</td>
+            <td align="left">0.567</td>
+            <td align="left"></td>            
+            <td align="left">SLB</td>       
+        </tr>
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/05/03</td>
+            <td align="left">0.91</td>
+            <td align="left">69.44</td>
+            <td align="left">46745211</td>
+            <td align="left">93.105</td>
+            <td align="left">45.5</td>
+            <td align="left">19.436</td>
+            <td align="left">13.799</td>
+            <td align="left">34272.36</td>            
+            <td align="left">1</td>
+            <td align="left">99.403</td>
+            <td align="left">7.15</td>
+            <td align="left">27.4</td>
+            <td align="left">31.4</td>
+            <td align="left"></td>
+            <td align="left">2.97</td>
+            <td align="left">83.56</td>
+            <td align="left">0.904</td>
+            <td align="left"></td>               
+            <td align="left">ESP</td>
+        </tr>         
+        <tr>
+            <td align="left"></td>
+            <td align="left">2021/08/13</td>
+            <td align="left">0.64</td>
+            <td align="left">73.15</td>
+            <td align="left">15092171</td>
+            <td align="left">42.729</td>
+            <td align="left">19.6</td>            
+            <td align="left">2.822</td>
+            <td align="left">1.882</td>
+            <td align="left">1899.775</td>
+            <td align="left">21.4</td>
+            <td align="left">307.846</td>
+            <td align="left">1.82</td>
+            <td align="left">1.6</td>
+            <td align="left">30.7</td>
+            <td align="left">36.791</td>
+            <td align="left">1.7</td>
+            <td align="left">61.49</td>
+            <td align="left">0.571</td>
+            <td align="left"></td>            
             <td align="left">ZWE</td>       
         </tr>                
     </tbody>
