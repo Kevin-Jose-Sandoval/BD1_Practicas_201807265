@@ -92,7 +92,7 @@ Un modelo conceptual de datos identifica las relaciones de más alto nivel entre
 </div>
 
 <p align="center">
-<img src="./images/image1.PNG">
+<img src="./images/image1.png">
 </p>
 
 **✔️ENTIDADES:** Una entidad es “algo” con significado del cual se necesita llevar información.  
@@ -174,7 +174,7 @@ Mape o transformación hacia el modelo lógico.
 **<h2>Ejemplo:</h2>**
 </br>
 <p align="center">
-    <img src="./images/image2.PNG">
+    <img src="./images/image2.png">
 </p>
 
 ***
