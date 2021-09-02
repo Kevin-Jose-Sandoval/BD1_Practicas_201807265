@@ -60,6 +60,187 @@
 
 # **Marco Teórico**
 
+**<h1 align="center">Modelos de datos</h1>**
+
+<div style="text-align: justify">
+Los modelos de datos definen cómo se modela la estructura lógica de una base de datos, estos son entidades fundamentales para introducir la abstracción en una base de datos y definen cómo los datos se conectan entre sí y cómo se procesan y almacenan dentro del sistema.
+</div>
+</br>
+<div style="text-align: justify">
+El primer modelo de datos fue el modelo de datos planos, donde todos los datos utilizados se mantendrían en el mismo plano. Los primeros modelos de datos no eran tan científicos, por lo tanto, eran propensos a introducir muchas anomalías de duplicación y actualización.
+Un modelo de datos puede ser concreto o abstracto, y están representados por la notación de modelado de datos, que a menudo se presenta en formato gráfico. Su enfoque principal es apoyar y ayudar a los sistemas de información mostrando el formato y la definición de los diferentes datos involucrados. También ayudan a evitar la redundancia de datos. La información almacenada en los modelos de datos es de gran importancia para las empresas porque dicta las relaciones entre las tablas de la base de datos, las claves externas y los eventos involucrados.  
+</div>
+</br>
+
+<div style="text-align: justify">
+Un modelo de datos puede ser concreto o abstracto, y están representados por la notación de modelado de datos, que a menudo se presenta en formato gráfico. Su enfoque principal es apoyar y ayudar a los sistemas de información mostrando el formato y la definición de los diferentes datos involucrados. También ayudan a evitar la redundancia de datos. La información almacenada en los modelos de datos es de gran importancia para las empresas porque dicta las relaciones entre las tablas de la base de datos, las claves externas y los eventos involucrados.  
+</div>
+
+
+Los tres tipos básicos de modelo de datos son:
+- Modelos de datos conceptuales
+- Modelos de datos físicos
+- Modelos de datos lógicos
+
+***
+
+**<h2 align="center">Modelo conceptual</h2>**
+
+<div style="text-align: justify">
+
+Un modelo conceptual de datos identifica las relaciones de más alto nivel entre las diferentes entidades. Las características del modelo conceptual de datos incluye las entidades importantes y las relaciones entre ellas, en este modelo no se especifica ningún atributo y tampoco se especifica ninguna clave principal.
+</div>
+
+<p align="center">
+<img src="./images/image1.PNG">
+</p>
+
+**✔️ENTIDADES:** Una entidad es “algo” con significado del cual se necesita llevar información.  
+**✔️ ATRIBUTOS:** Los atributos identifican, cualifican, o cuantifican o describen a una entidad.  
+**✔️ INSTANCIAS DE UNA ENTIDAD:** Una entidad tiene múltiples ocurrencias o instancias que consisten en valores específicos para los atributos de una entidad.   
+**✔️  TIPOS DE ATRIBUTOS:**
+- IDENTIFICADORES UNICOS: Cada instancia debe ser identificada de forma única de otras instancias de la misma entidad. Un identificador único (UID) es cualquier combinación de atributos que sirven para identificar de forma única a una instancia de una Entidad.
+- ATRIBUTOS OPCIONALES Y OBLIGATORIOS: Un atributo es opcional si para una instancia cualquiera de la entidad existe la posibilidad de que no tenga valor. Un atributo es obligatorio si para cualquier instancia el atributo siempre debe tener valor.  
+
+**✔️ DIAGRAMACION DE ENTIDADES:** Existen diferentes notaciones para representar las entidades, la notación más utilizada es de barkers.  
+**✔️ RELACIONES:** Una relación es una asociación bidireccional entre dos o mas entidades o entre una entidad y ella misma. Existen tres tipos de relaciones:
+- Uno a Muchos 1:M 1:*
+- Uno a uno 1:1 
+- Muchos a Muchos M:M *:*  
+
+**✔️ CARDINALIDAD:** La cardinalidad define con cuantas instancias de otra entidad puede está relacionada una instancia. La cardinalidad puede ser: Uno y solo uno ó de uno a muchos.  
+**✔️ OPCIONALIDAD:** La opcionalidad indica si existe la posibilidad de que una instancia no esté relacionada con ninguna otra instancia en la relación.  
+
+</br>
+
+***
+
+**<h2 align="center">Modelo lógico</h2>**
+
+Un modelo de datos lógicos describe los datos con el mayor detalle posible, independientemente de cómo se implementarán físicamente en la base de datos. Las características de un modelo de datos lógicos incluyen:    
+</br>
+
+- Incluye todas las entidades y relaciones entre ellos.  
+- Todos los atributos para cada entidad están especificados.  
+- La clave principal para cada entidad está especificada.  
+- Se especifican las claves externas (claves que identifican la relación entre diferentes entidades).  
+- La normalización ocurre en este nivel.  
+
+Mape o transformación hacia el modelo lógico.
+<table table border="3">
+    <thead>
+        <tr>
+            <th align="left">Modelo de datos</th>
+            <th align="left">Se convierte en</th>
+            <th align="left">Modelo relacional</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><code>Entidades</code></td>
+            <th align="left">➜</th>
+            <td align="left">Tablas</td>
+        </tr>
+        <tr>
+            <td align="left"><code>Atributos</code></td>
+            <th align="left">➜</th>
+            <td align="left">Columnas de la tabla</td>
+        </tr>
+        <tr>
+            <td align="left"><code>Si el atributo es: Identificador Unico #</code></td>
+            <th align="left">➜</th>
+            <td align="left">Llave Primaria (PK)</td>
+        </tr>
+        <tr>
+            <td align="left"><code>Si el atributo es:  Obligatorio *</code></td>
+            <th align="left">➜</th>
+            <td align="left">NOT NULL</td>
+        </tr>
+        <tr>
+            <td align="left"><code>Si el atributo es: Opcional o</code></td>
+            <th align="left">➜</th>
+            <td align="left">NULL</td>
+        </tr>
+        <tr>
+            <td align="left"><code>Si el atributo es: Llave candidata (#)</code></td>
+            <th align="left">➜</th>
+            <td align="left">Unique</td>
+        </tr>         
+    </tbody>
+</table> 
+
+</br>
+
+**<h2>Ejemplo:</h2>**
+</br>
+<p align="center">
+    <img src="./images/image2.PNG">
+</p>
+
+***
+
+**<h2 align="center">Modelo físico</h2>**
+
+<div style="text-align: justify">
+El modelo de datos físicos representa cómo se construirá el modelo en la base de datos. Un modelo de base de datos física muestra todas las estructuras de tabla, incluidos el nombre de columna, el tipo de datos de columna, las restricciones de columna, la clave principal, la clave externa y las relaciones entre las tablas.
+</div>
+</br>
+
+
+Las características de un modelo de datos físicos incluyen:
+
+- Especificación de todas las tablas y columnas.
+- Las claves externas se usan para identificar relaciones entre tablas.
+- La desnormalización puede ocurrir según los requisitos del usuario.
+- Las consideraciones físicas pueden hacer que el modelo de datos físicos sea bastante diferente del modelo de datos lógicos.
+
+<div style="text-align: justify">
+El modelo de datos físicos será diferente para diferentes Sistemas de Gestión de Base de datos. Por ejemplo, el tipo de datos para una columna puede ser diferente entre MySQL y SQL Server. Los pasos básico para el diseño del modelo de datos físicos son los siguientes:
+</div>
+</br>
+
+- Convertir entidades en tablas.
+- Convertir relaciones en claves externas.
+- Convertir atributos en columnas.
+- Modificar el modelo de datos físicos en función de las restricciones.
+
+**<h2>Ejemplo:</h2>**  
+**DDL**
+```sql
+CREATE TABLE departments
+( dept_id INT NOT NULL,
+  dept_name VARCHAR(50) NOT NULL,
+  CONSTRAINT departments_pk PRIMARY KEY (dept_id)
+);
+
+CREATE TABLE employees
+( employee_number INT NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  salary INT,
+  dept_id INT,
+  CONSTRAINT employees_pk PRIMARY KEY (employee_number)
+);
+```
+
+**DML**
+
+```sql
+INSERT INTO departments (dept_id, dept_name) VALUES (30, 'Accounting');
+INSERT INTO departments (dept_id, dept_name) VALUES (45, 'Sales');
+
+INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (12009, 'Sutherland', 'Barbara', 54000, 45);
+INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (34974, 'Yates', 'Fred', 80000, 45);
+INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (34987, 'Erickson', 'Neil', 42000, 45);
+INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (45001, 'Parker', 'Salary', 57500, 30);
+INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (75623, 'Gates', 'Steve', 65000, 30);
+```
+***
+</br>
+
+
+
+
 # **Modelo Conceptual:**
 
 <br/>
