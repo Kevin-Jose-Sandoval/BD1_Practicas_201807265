@@ -84,7 +84,7 @@ Los tres tipos básicos de modelo de datos son:
 
 ***
 
-**<h2 align="center">Modelo conceptual</h2>**
+**<h2 align="center">"Modelo conceptual"</h2>**
 
 <div style="text-align: justify">
 
@@ -115,7 +115,7 @@ Un modelo conceptual de datos identifica las relaciones de más alto nivel entre
 
 ***
 
-**<h2 align="center">Modelo lógico</h2>**
+**<h2 align="center">"Modelo lógico"</h2>**
 
 Un modelo de datos lógicos describe los datos con el mayor detalle posible, independientemente de cómo se implementarán físicamente en la base de datos. Las características de un modelo de datos lógicos incluyen:    
 </br>
@@ -179,7 +179,7 @@ Mape o transformación hacia el modelo lógico.
 
 ***
 
-**<h2 align="center">Modelo físico</h2>**
+**<h2 align="center">"Modelo físico"</h2>**
 
 <div style="text-align: justify">
 El modelo de datos físicos representa cómo se construirá el modelo en la base de datos. Un modelo de base de datos física muestra todas las estructuras de tabla, incluidos el nombre de columna, el tipo de datos de columna, las restricciones de columna, la clave principal, la clave externa y las relaciones entre las tablas.
