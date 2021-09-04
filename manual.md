@@ -1981,3 +1981,82 @@ INSERT INTO COUNTRY_DETAIL (date, reproduction_rate, stringency_index, populatio
 ```
 
 # **Glosario**
+
+<table table border="3">
+    <thead>
+        <tr>
+            <th align="left"></th>
+            <th align="left">Concepto</th>
+            <th align="left">Descripción</th>
+        </tr>
+    </thead>
+    <tbody>     
+        <tr>
+            <td align="left">1</td>
+            <td align="left"><code>Entidad</code></td>
+            <td align="left">Se define como una unidad de una base de datos que contiene información. Esta unidad es una representación dentro de la base de datos de un objeto, persona, empresa, etc, del mundo real, y como tal posee ciertos atributos que la diferencian del resto de entidades.</td>
+        </tr>  
+        <tr>
+            <td align="left">2</td>
+            <td align="left"><code>Atributo</code></td>
+            <td align="left">Característica o rasgo de un tipo de entidad que describe la entidad.</td>
+        </tr>                                       
+        <tr>
+            <td align="left">3</td>
+            <td align="left"><code>Relación</code></td>
+            <td align="left">Una relación es una asociación bidireccional entre dos o mas entidades o entre una entidad y ella misma.</td>
+        </tr>  
+        <tr>
+            <td align="left">4</td>
+            <td align="left"><code>Opcionalidad</code></td>
+            <td align="left">La opcionalidad indica si existe la posibilidad de que una instancia no esté relacionada con ninguna otra instancia en la relación.</td>
+        </tr> 
+        <tr>
+            <td align="left">5</td>
+            <td align="left"><code>Modelo de datos</code></td>
+            <td align="left">Es la representación abstracta, conceptual, gráfica y visual de los datos de un negocio o una organización. Como estos datos están estructurados y relacionados entre sí.</td>
+        </tr>        
+        <tr>
+            <td align="left">6</td>
+            <td align="left"><code>Modelo de datos conceptual</code></td>
+            <td align="left">Los requisitos de datos se registran inicialmente como un modelo de datos conceptual que es esencialmente un conjunto de especificaciones tecnológicas independientes y se utiliza para representar las reglas del negocio. </td>
+        </tr>
+        <tr>
+            <td align="left">7</td>
+            <td align="left"><code>Modelo de datos Lógico</code></td>
+            <td align="left">El modelo conceptual se traduce luego en un modelo de datos lógico, que documenta las estructuras de los datos que se pueden implementar en las bases de datos. </td>
+        </tr>  
+        <tr>
+            <td align="left">8</td>
+            <td align="left"><code>Modelo Físico</code></td>
+            <td align="left">El último paso en el modelado de datos es transformar el modelo de datos lógico en un modelo de datos físico que organice los datos en una base de datos y que tenga en cuenta los detalles de acceso, rendimiento y almacenamiento. Este es dependiente del software y del hardware.</td>
+        </tr>
+        <tr>
+            <td align="left">9</td>
+            <td align="left"><code>Consistencia de datos</code></td>
+            <td align="left">Los datos se mantienen en el tiempo(Persistencia) , piezas individuales de los datos pueden ser accedidos por muchos usuarios al mismo tiempo (Compartidos) y por último todo está relacionado que toda la información tenga sentido (Integridad).</td>
+        </tr>  
+        <tr>
+            <td align="left">10</td>
+            <td align="left"><code>Notación de Barker</code></td>
+            <td align="left">Se refiere a la notación ERD desarrollada por Richard Barker, la notación tiene características que representan las propiedades de las relaciones, incluida la cardinalidad y la opcionalidad (la pata de gallo y las líneas discontinuas), la exclusión (el arco de exclusión), la recursividad (estructuras de bucle) y el uso de abstracción (cajas anidadas).</td>
+        </tr>                             
+        <tr>
+            <td align="left">11</td>
+            <td align="left"><code>Markdown</code></td>
+            <td align="left">Es un lenguaje de marcado que facilita la aplicación de formato a un texto empleando una serie de caracteres de una forma especial.</td>
+        </tr>        
+        <tr>
+            <td align="left">12</td>
+            <td align="left"><code>DDL</code></td>
+            <td align="left">Es el nombre corto del lenguaje de definición de datos, que se ocupa de los esquemas y descripciones de la base de datos, de cómo deben residir los datos en la base de datos (CREAR, ALTER, DROP, TRUNCATE)</td>
+        </tr>
+        <tr>
+            <td align="left">13</td>
+            <td align="left"><code>DML</code></td>
+            <td align="left">Es el nombre corto del lenguaje de manipulación de datos que se ocupa de la manipulación de datos e incluye las instrucciones SQL más comunes como SELECCIONAR, INSERTAR, ACTUALIZAR, ELIMINAR. </td>
+        </tr>                
+    </tbody>
+</table> 
+
+</br>
