@@ -207,34 +207,81 @@ El modelo de datos físicos será diferente para diferentes Sistemas de Gestión
 **<h2>Ejemplo:</h2>**  
 **DDL**
 ```sql
-CREATE TABLE departments
-( dept_id INT NOT NULL,
-  dept_name VARCHAR(50) NOT NULL,
-  CONSTRAINT departments_pk PRIMARY KEY (dept_id)
+/* Definiendo secuencias */
+CREATE SEQUENCE departamento_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE proyecto_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE empleado_seq START WITH 1 INCREMENT BY 1;
+
+/* DEFINIENDO EL ESQUEMA DE LA BASE DE DATOS */
+
+/* DDL */
+CREATE TABLE Departamento (
+    depto NUMBER default departamento_seq.nextval,
+    nombre VARCHAR2(30) NOT NULL,
+    
+    CONSTRAINT departamento_PK PRIMARY KEY (depto)
 );
 
-CREATE TABLE employees
-( employee_number INT NOT NULL,
-  last_name VARCHAR(50) NOT NULL,
-  first_name VARCHAR(50) NOT NULL,
-  salary INT,
-  dept_id INT,
-  CONSTRAINT employees_pk PRIMARY KEY (employee_number)
+CREATE TABLE Vehiculo (
+    placa VARCHAR2(10),
+    marca VARCHAR2(15) NOT NULL,
+    capacidad NUMBER,
+    
+    CONSTRAINT departamento_PK PRIMARY KEY (placa)
 );
+
+CREATE TABLE Proyecto (
+    codigo NUMBER default proyecto_seq.nextval,
+    nombre VARCHAR2(20) NOT NULL,
+    fecha_inicial DATE NOT NULL,
+    fecha_final DATE,
+    
+    CONSTRAINT proyecto_PK PRIMARY KEY (codigo)
+);
+
+CREATE TABLE Empleado (
+    registro NUMBER default empleado_seq.nextval,
+    salario DECIMAL(8, 2) NOT NULL,
+    dpi VARCHAR2(20) NOT NULL,
+    sexo VARCHAR2(1),
+    comision DECIMAL(8, 2),
+    depto NUMBER NOT NULL,
+    placa VARCHAR2(10),
+    registro_jefe NUMBER,
+    
+    CONSTRAINT proyecto_PK PRIMARY KEY (registro),
+    CONSTRAINT empleado_depto_FK FOREIGN KEY (depto) REFERENCES Departamento(depto),
+    CONSTRAINT empleado_vehiculo_FK FOREIGN KEY (placa) REFERENCES Vehiculo(placa),
+    CONSTRAINT empleado_empleado_FK FOREIGN KEY (registro_jefe) REFERENCES Empleado(registro)
+);
+
+CREATE TABLE Asignacion_Proyecto(
+    registro NUMBER,
+    codigo NUMBER,
+    horas NUMBER NOT NULL,
+
+    CONSTRAINT asignacion_proyecto_PK PRIMARY KEY (registro, codigo),
+);
+
+
 ```
 
 **DML**
 
 ```sql
-INSERT INTO departments (dept_id, dept_name) VALUES (30, 'Accounting');
-INSERT INTO departments (dept_id, dept_name) VALUES (45, 'Sales');
+/* Departamento */
+INSERT INTO Departamento (nombre) VALUES ('Contabilidad');
+INSERT INTO Departamento (nombre) VALUES ('Informática');
+INSERT INTO Departamento (nombre) VALUES ('Producción');
+INSERT INTO Departamento (nombre) VALUES ('Ventas');
 
-INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (12009, 'Sutherland', 'Barbara', 54000, 45);
-INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (34974, 'Yates', 'Fred', 80000, 45);
-INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (34987, 'Erickson', 'Neil', 42000, 45);
-INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (45001, 'Parker', 'Salary', 57500, 30);
-INSERT INTO employees (employee_number, last_name, first_name, salary, dept_id) VALUES (75623, 'Gates', 'Steve', 65000, 30);
+INSERT INTO Departamento (placa, marca, capacidad) VALUES ('GGN3426', 'FORD', 6);
+INSERT INTO Departamento (placa, marca, capacidad) VALUES ('PMA1359', 'NISSAN', 4);
+INSERT INTO Departamento (placa, marca, capacidad) VALUES ('PMR8706', 'NISSAN', 4);
+INSERT INTO Departamento (placa, marca) VALUES ('LTU5408', 'CHEVROLET');
+INSERT INTO Departamento (placa, marca, capacidad) VALUES ('PVP2631', 'NISSAN', 4);
 ```
+
 ***
 </br>
 
