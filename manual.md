@@ -1682,4 +1682,302 @@ Entidad que almacena campos más generales de la información que puede necesita
 
 # **Modelo Físico**
 
+
+**DEFINIENDO SECUENCIAS**
+
+```sql
+CREATE SEQUENCE continent_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE test_unit_seq START WITH 1 INCREMENT BY 1;
+
+```
+
+**DDL**
+```sql
+CREATE TABLE CONTINENT (
+    code NUMBER default continent_seq.nextval,
+    name VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE COUNTRY (
+    iso_code VARCHAR(10),
+    location VARCHAR (25) NOT NULL
+    code NUMBER
+);
+
+CREATE TABLE CASE_REGISTER (
+    date DATE,
+    new_cases NUMBER NOT NULL,
+    new_cases_smoothed DECIMAL(8, 2),
+    new_cases_per_million DECIMAL(8, 2) NOT NULL,
+    new_cases_smoothed_per_million
+    total_cases NUMBER NOT NULL,
+    total_cases_per_million DECIMAL(8, 2) NOT NULL,
+    iso_code VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE DEATH_REGISTER (
+    date DATE,
+    new_deaths NUMBER, 
+    new_deaths_smoothed DECIMAL(8, 2),
+    new_deaths_per_million DECIMAL(8, 2),
+    new_deaths_smoothed_per_million DECIMAL(8, 2),
+    total_deaths NUMBER,
+    total_deaths_per_million DECIMAL(8, 2),
+    iso_code VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE INTENSIVE_PATIENTS (
+    date DATE,
+    icu_patients NUMBER,
+    icu_patients_per_million DECIMAL(8, 2),
+    weekly_icu_admissions NUMBER,
+    weekly_icu_admissions_per_million DECIMAL(8, 2),
+    iso_code VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE HOSPITALIZED (
+    date DATE,
+    hosp_patients NUMBER,
+    hosp_patients_per_million DECIMAL(8, 2),
+    weekly_hosp_admissions NUMBER,
+    weekly_hosp_admissions_per_million DECIMAL(8, 2),
+    iso_code VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE TEST_UNIT (
+    code NUMBER default test_unit_seq.nextval,
+    name VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE TEST_REGISTER (
+    date DATE,
+    new_tests NUMBER,
+    total_tests NUMBER,
+    total_tests_per_thousan DECIMAL(8, 2),
+    new_tests_per_thousand DECIMAL(8, 2),
+    new_tests_smoothed NUMBER,
+    new_tests_smoothed_per_thousand DECIMAL(8, 2),  
+    tests_per_case DECIMAL(8, 2),
+    positive_rate DECIMAL(8, 2),
+    code NUMBER, 
+    iso_code VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE VACCINATION (
+    date DATE,
+    total_vaccinations NUMBER,
+    people_vaccinated NUMBER,
+    people_fully_vaccinated NUMBER,
+    total_boosters NUMBER,
+    new_vaccinations NUMBER,
+    new_vaccinations_smoothed NUMBER,
+    total_vaccinations_per_hundred DECIMAL(8, 2),
+    people_vaccinated_per_hundred DECIMAL(8, 2),
+    people_fully_vaccinated_per_hundred DECIMAL(8, 2),
+    total_boosters_per_hundred DECIMAL(8, 2),
+    new_vaccinations_smoothed_per_million NUMBER,
+    iso_code VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE COUNTRY_DETAIL (
+    date DATE,
+    reproduction_rate DECIMAL(8, 2),
+    stringency_index DECIMAL(8, 2),
+    population NUMBER,
+    population_density DECIMAL(8, 2),
+    median_age DECIMAL(8, 2),
+    aged_65_older DECIMAL(8, 2),
+    aged_70_older DECIMAL(8, 2),
+    gdp_per_capita DECIMAL(8, 2),
+    extreme_poverty DECIMAL(8, 2),
+    cardiovasc_death_rate DECIMAL(8, 2),
+    diabetes_prevalence DECIMAL(8, 2),
+    female_smokers DECIMAL(8, 2),
+    male_smokers DECIMAL(8, 2),
+    handwashing_facilities DECIMAL(8, 2),
+    hospital_beds_per_thousand DECIMAL(8, 2),
+    life_expectancy DECIMAL(8, 2),
+    human_development_index DECIMAL(8, 2),
+    excess_mortality DECIMAL(8, 2),
+    iso_code VARCHAR(10) NOT NULL
+);
+```
+
+**CONSTRAINTS**
+
+```sql
+/* CONTINENT */
+ALTER TABLE CONTINENT ADD CONSTRAINT pk_continent PRIMARY KEY(code);
+/* COUNTRY */
+ALTER TABLE COUNTRY ADD CONSTRAINT pk_country PRIMARY KEY(iso_code);
+ALTER TABLE COUNTRY ADD CONSTRAINT fk_country_continent 
+    FOREIGN KEY(code) REFERENCES CONTINENT(code);
+/* CASE_REGISTER */
+ALTER TABLE CASE_REGISTER ADD CONSTRAINT pk_case_register PRIMARY KEY(date);
+ALTER TABLE CASE_REGISTER ADD CONSTRAINT fk_case_register_country 
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);
+/* DEATH_REGISTER */
+ALTER TABLE DEATH_REGISTER ADD CONSTRAINT pk_death_register PRIMARY KEY(date);
+ALTER TABLE DEATH_REGISTER ADD CONSTRAINT fk_death_register_country 
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);
+/* INTENSIVE_PATIENTS */
+ALTER TABLE INTENSIVE_PATIENTS ADD CONSTRAINT pk_intensive_patients PRIMARY KEY(date);
+ALTER TABLE INTENSIVE_PATIENTS ADD CONSTRAINT fk_intensive_patients_country 
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);
+/* HOSPITALIZED */
+ALTER TABLE HOSPITALIZED ADD CONSTRAINT pk_hospitalized PRIMARY KEY(date);
+ALTER TABLE HOSPITALIZED ADD CONSTRAINT fk_hospitalized_country 
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);    
+/* TEST_UNIT */
+ALTER TABLE TEST_UNIT ADD CONSTRAINT pk_test_unit PRIMARY KEY(code);
+/* HOSPITALIZED */
+ALTER TABLE TEST_REGISTER ADD CONSTRAINT pk_test_register PRIMARY KEY(date);
+ALTER TABLE TEST_REGISTER ADD CONSTRAINT fk_test_register_country 
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);
+/* VACCINATION */
+ALTER TABLE VACCINATION ADD CONSTRAINT pk_vaccination PRIMARY KEY(date);
+ALTER TABLE VACCINATION ADD CONSTRAINT fk_vaccination_country
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);    
+/* COUNTRY_DETAIL */
+ALTER TABLE COUNTRY_DETAIL ADD CONSTRAINT pk_country_detail PRIMARY KEY(date);
+ALTER TABLE COUNTRY_DETAIL ADD CONSTRAINT fk_country_detail_country
+    FOREIGN KEY(iso_code) REFERENCES COUNTRY(iso_code);
+```
+
+**DML**
+
+```sql
+/* CONTINENT */
+INSERT INTO COUNTRY(name) VALUES ('Asia');
+INSERT INTO CONTINENT(name) VALUES ('Europe');
+INSERT INTO CONTINENT(name) VALUES ('Africa');
+INSERT INTO CONTINENT(name) VALUES ('North America');
+INSERT INTO CONTINENT(name) VALUES ('South America');
+INSERT INTO CONTINENT(name) VALUES ('Oceania');
+/* COUNTRY */
+INSERT INTO COUNTRY(iso_code, location, code) VALUES ('HUN','Hungary', 2);
+INSERT INTO COUNTRY(iso_code, location, code) VALUES ('HKG','Hong Kong', 1);
+INSERT INTO COUNTRY(iso_code, location, code) VALUES ('BHS','Bahamas', 4);
+INSERT INTO COUNTRY(iso_code, location, code) VALUES ('ZWE','Zimbabwe', 3);
+INSERT INTO COUNTRY(iso_code, location, code) VALUES ('SLB','Solomon Islands', 6);
+INSERT INTO COUNTRY(iso_code, location, code) VALUES ('ESP','Spain', 2);
+/* CASE_REGISTER */
+INSERT INTO CASE_REGISTER (date, new_cases, new_cases_smoothed, new_cases_per_million, new_cases_smoothed_per_million, 
+    total_cases, total_cases_per_million, iso_code)
+        VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'),0, 1.143, 0, 0.151, 8, 1.059, 'HKG');
+INSERT INTO CASE_REGISTER (date, new_cases, new_cases_smoothed, new_cases_per_million, new_cases_smoothed_per_million, 
+    total_cases, total_cases_per_million, iso_code) 
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 7, 4.286, 0.727, 0.445, 39, 4.048, 'HUN');
+INSERT INTO CASE_REGISTER (date, new_cases, new_cases_smoothed, new_cases_per_million, new_cases_smoothed_per_million, 
+    total_cases, total_cases_per_million, iso_code) 
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 1, 2.143, 2.519, 5.399, 29, 73.064, 'BHS');
+INSERT INTO CASE_REGISTER (date, new_cases, new_cases_smoothed, new_cases_per_million, new_cases_smoothed_per_million, 
+    total_cases, total_cases_per_million, iso_code) 
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 0, 0.429, 0, 0.609, 3, 4.261, 'SLB');  
+INSERT INTO CASE_REGISTER (date, new_cases, new_cases_smoothed, new_cases_per_million, new_cases_smoothed_per_million, 
+    total_cases, total_cases_per_million, iso_code) 
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 16353, 7423, 349.833, 158.797, 3540430, 75738.882, 'ESP'); 
+INSERT INTO CASE_REGISTER (date, new_cases, new_cases_smoothed, new_cases_per_million, new_cases_smoothed_per_million, 
+    total_cases, total_cases_per_million, iso_code) 
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 754, 580.429, 49.96, 38.459, 119508, 7918.543, 'ZWE'); 
+/* DEATH_REGISTER */
+INSERT INTO DEATH_REGISTER (date, new_deaths_smoothed, new_deaths_smoothed_per_million, iso_code)
+    VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'), 0, 0, 'HKG');
+INSERT INTO DEATH_REGISTER (date, new_deaths, new_deaths_smoothed, new_deaths_per_million, new_deaths_smoothed_per_million,
+    total_deaths, total_deaths_per_million, iso_code)
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 0, 0.143, 0, 0.015, 1, 0.104, 'HUN');
+INSERT INTO DEATH_REGISTER (date, new_deaths, new_deaths_smoothed, new_deaths_per_million, new_deaths_smoothed_per_million,
+    total_deaths, total_deaths_per_million)
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 1, 0.714, 2.519, 1.8, 5, 12.597, 'BHS');
+INSERT INTO DEATH_REGISTER (date, new_deaths_smoothed, new_deaths_smoothed_per_million, iso_code)
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 0, 0,  'SLB');
+INSERT INTO DEATH_REGISTER (date, new_deaths, new_deaths_smoothed, new_deaths_per_million, new_deaths_smoothed_per_million,
+    total_deaths, total_deaths_per_million, iso_code)
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 77, 79.286, 1.647, 1.696, 78293, 1674.888, 'ESP');
+INSERT INTO DEATH_REGISTER (date, new_deaths, new_deaths_smoothed, new_deaths_per_million, new_deaths_smoothed_per_million,
+    total_deaths, total_deaths_per_million, iso_code)
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 26, 38.286, 1.723, 2.537, 4073, 269.875, 'ZWE');
+/* INTENSIVE_PATIENTS */
+INSERT INTO INTENSIVE_PATIENTS (date, iso_code)
+        VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'), 'HKG');
+INSERT INTO INTENSIVE_PATIENTS (date, iso_code)
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 'HUN');
+INSERT INTO INTENSIVE_PATIENTS (date, iso_code)
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 'BHS');
+INSERT INTO INTENSIVE_PATIENTS (date, iso_code)
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 'SLB');      
+INSERT INTO INTENSIVE_PATIENTS (date, icu_patients, icu_patients_per_million, iso_code)
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 2323, 49.695, 'ESP');
+INSERT INTO INTENSIVE_PATIENTS (date, iso_code)
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 'ZWE');  
+/* HOSPITALIZED */
+INSERT INTO HOSPITALIZED (date, iso_code)
+        VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'), 'HKG');
+INSERT INTO HOSPITALIZED (date, hosp_patients, hosp_patients_per_million, iso_code)
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 36, 3.737, 'HUN');
+INSERT INTO HOSPITALIZED (date, iso_code)
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 'BHS');
+INSERT INTO HOSPITALIZED (date, iso_code)
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 'SLB');      
+INSERT INTO HOSPITALIZED (date, hosp_patients, hosp_patients_per_million, iso_code)
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 9747, 208.513, 'ESP');
+INSERT INTO HOSPITALIZED (date, iso_code)
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 'ZWE'); 
+/* TEST_UNIT */
+INSERT INTO TEST_UNIT (code, name) VALUES (1, 'tests performed');
+INSERT INTO TEST_UNIT (code, name) VALUES (2, 'units unclear');
+INSERT INTO TEST_UNIT (code, name) VALUES (3, 'samples tested');
+INSERT INTO TEST_UNIT (code, name) VALUES (4, 'people tested');
+/* TEST_REGISTER */
+INSERT INTO TEST_REGISTER (date, iso_code)
+        VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'), 'HKG');
+INSERT INTO TEST_REGISTER (date, new_tests, total_tests, total_tests_per_thousan, new_tests_per_thousand, new_tests_smoothed,
+    new_tests_smoothed_per_thousand, tests_per_case, positive_rate, code, iso_code)
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 234, 1240, 0.129, 0.024, 146, 0, 34.1, 0.029, 1, 'HUN');
+INSERT INTO TEST_REGISTER (date, iso_code)
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 'BHS');
+INSERT INTO TEST_REGISTER (date, iso_code)
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 'SLB');      
+INSERT INTO TEST_REGISTER (date, new_tests_smoothed, new_tests_smoothed_per_thousand, tests_per_case, positive_rate, code, iso_code)
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 122115, 2.612, 16.5, 0.061, 1, 'ESP');
+INSERT INTO TEST_REGISTER (date, new_tests 	total_tests, total_tests_per_thousan, new_tests_per_thousand, new_tests_smoothed, 
+    new_tests_smoothed_per_thousand, tests_per_case, positive_rate, code, iso_code)
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 7026, 1046386, 69.333, 0.466, 5496, 0.364, 9.5, 0.106, 1, 'ZWE'); 
+/* VACCINATION */
+INSERT INTO VACCINATION (date, iso_code)
+        VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'), 'HKG');
+INSERT INTO VACCINATION (date, iso_code)
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 'HUN');
+INSERT INTO VACCINATION (date, iso_code)
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 'BHS');
+INSERT INTO VACCINATION (date, iso_code)
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 'SLB');
+INSERT INTO VACCINATION (date, total_vaccinations, people_vaccinated, people_fully_vaccinated, new_vaccinations, new_vaccinations_smoothed,
+      total_vaccinations_per_hundred, people_vaccinated_per_hundred, people_fully_vaccinated_per_hundred, new_vaccinations_smoothed_per_million, iso_code)
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 17430810, 2381213, 5202297, 252244, 348020, 37.29, 26.49, 11.13, 7445, 'ESP');
+INSERT INTO VACCINATION (date, new_vaccinations_smoothed, new_vaccinations_smoothed_per_million, iso_code)
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 56484, 3743, 'ZWE');
+/* COUNTRY_DETAIL */
+INSERT INTO COUNTRY_DETAIL (date, stringency_index, population, population_density, median_age, aged_65_older, aged_70_older, gdp_per_capita, 
+    diabetes_prevalence, iso_code, life_expectancy, human_development_index, iso_code)
+        VALUES (TO_DATE('2020/01/28','YYYY/MM/DD'), 45.37, 7552800, 7039.714, 44.8, 16.303, 10.158, 56054.92, 8.33, 84.86, 0.949, 'HKG');
+INSERT INTO COUNTRY_DETAIL (date, stringency_index, population, population_density, median_age, aged_65_older, aged_70_older, gdp_per_capita, 
+    extreme_poverty, cardiovasc_death_rate, diabetes_prevalence, female_smokers, male_smokers, hospital_beds_per_thousand, life_expectancy, 
+    human_development_index, iso_code)
+        VALUES (TO_DATE('2020/03/16','YYYY/MM/DD'), 67.59, 9634162, 108.043, 43.4, 18.577, 11.976, 26777.561, 0.5, 278.296, 7.55, 26.8, 34.8, 7.02, 76.88, 0.854, 'HUN');
+INSERT INTO COUNTRY_DETAIL (date, stringency_index, population, population_density, median_age, aged_65_older, aged_70_older gdp_per_capita,
+    cardiovasc_death_rate, diabetes_prevalence, female_smokers, male_smokers, hospital_beds_per_thousand, life_expectancy, human_development_index, iso_code)
+        VALUES (TO_DATE('2020/04/06','YYYY/MM/DD'), 96.3, 396914, 39.497, 34.3, 8.996, 5.2, 27717.847, 235.954, 13.17, 3.1, 20.4, 2.9, 73.92, 0.814, 'BHS');
+INSERT INTO COUNTRY_DETAIL (date, stringency_index, population, population_density, median_age, aged_65_older, aged_70_older, gdp_per_capita, extreme_poverty,
+    cardiovasc_death_rate, diabetes_prevalence, handwashing_facilities, hospital_beds_per_thousand, life_expectancy, human_development_index, iso_code)
+        VALUES (TO_DATE('2020/10/18','YYYY/MM/DD'), 43.52, 703995, 21.841, 20.8, 3.507, 2.043, 2205.923, 25.1, 459.78, 18.68, 35.89, 1.4, 73, 0.567, 'SLB');
+INSERT INTO COUNTRY_DETAIL (date, reproduction_rate, stringency_index, population, population_density, median_age, aged_65_older, aged_70_older, gdp_per_capita, 
+    extreme_poverty, cardiovasc_death_rate, diabetes_prevalence, female_smokers, male_smokers, hospital_beds_per_thousand, life_expectancy, human_development_index, iso_code)
+        VALUES (TO_DATE('2021/05/03','YYYY/MM/DD'), 0.91, 69.44, 46745211, 93.105, 45.5, 19.436, 13.799, 34272.36, 1, 99.403, 7.15, 27.4, 31.4, 2.97, 83.56, 0.904, 'ESP');
+INSERT INTO COUNTRY_DETAIL (date, reproduction_rate, stringency_index, population, population_density, median_age, aged_65_older, aged_70_older, gdp_per_capita,
+    extreme_poverty, cardiovasc_death_rate, diabetes_prevalence, female_smokers, male_smokers, handwashing_facilities, hospital_beds_per_thousand, 
+    life_expectancy, human_development_index, iso_code)
+        VALUES (TO_DATE('2021/08/13','YYYY/MM/DD'), 0.64, 73.15, 15092171, 42.729, 19.6, 2.822, 1.882, 1899.775, 21.4, 307.846, 1.82, 1.6, 30.7, 36.791, 1.7, 61.49, 0.571, 'ZWE');
+```
+
 # **Glosario**
