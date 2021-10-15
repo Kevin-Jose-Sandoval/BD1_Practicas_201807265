@@ -43,6 +43,7 @@
   - [**Script de la carga masiva**](#script-de-la-carga-masiva)
     - [<h2><b> Oracle </h2></b>](#h2b-oracle-h2b)
     - [<h2><b> MySQL </h2></b>](#h2b-mysql-h2b)
+  - [**Reporte sobre DBMS**](#reporte-sobre-dbms)
 
 <br/>
 <br/>
@@ -2421,3 +2422,20 @@ SELECT STR_TO_DATE(t.date, "%Y-%m-%d") date_,
 ;
 ```
 
+
+## **Reporte sobre DBMS**
+
+<p align="center">
+<img src="./images/comparacion.png">
+</p>
+<br/>
+<br/>
+
+<h2><b>Propuesta: ORACLE</b></h2>
+
+<h2>¿Por qué?</h2>
+
+<div>
+Basado en los resultados obtenidos a partir de estas 10 consultas, claramente se observa una gran ventaja en cuanto a tiempo de ejecución por parte deL DBMS Oracle, solamente en la consulta 5 y 6 superó MySQL a Oracle por unos milisegundos. <br/>
+Por lo tanto, concluyo con la recomendación de usar Oracle, aunque a veces su instalación se puede complicar dependiendo del sistema operativo en la que se desee ejecutar, pero ya se comprobó que en tiempo de ejecución supera a MySQL, además de proporcionar otras ventajas como seguridad, acceso a los datos, gestión de usuarios, etc.
+</div>

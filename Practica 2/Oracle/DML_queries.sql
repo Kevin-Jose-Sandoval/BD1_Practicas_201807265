@@ -164,7 +164,7 @@ END;
 
 /* 8. Funci�n o m�todo que reciba la fecha como par�metro y que muestre el pa�s que
 reporto m�s muertes en ese d�a. */
---01/12/20
+--13/03/20
 
 CREATE OR REPLACE PROCEDURE proc_query8(
     p_date IN VARCHAR2,
