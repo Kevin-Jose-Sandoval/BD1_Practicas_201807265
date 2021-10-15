@@ -1,0 +1,1 @@
+sqlldr userid= bd1_practica2/bd1 control=dataUpload.ctl

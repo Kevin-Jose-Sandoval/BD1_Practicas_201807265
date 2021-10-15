@@ -1,0 +1,14 @@
+/* CREATING USER */
+CONN /AS SYSDBA
+SHOW USER
+
+ALTER SESSION SET “_ORACLE_SCRIPT” = TRUE;
+CREATE USER bd1_practica2 IDENTIFIED BY bd1;
+GRANT DBA TO bd1_practica2;
+
+/*
+localhost
+1521
+orcl
+
+*/
