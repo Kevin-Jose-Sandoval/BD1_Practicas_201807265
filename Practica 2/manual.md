@@ -2115,12 +2115,27 @@ INSERT INTO COUNTRY_DETAIL (date, reproduction_rate, stringency_index, populatio
 <br/>
 <br/>
 
+<p align="center">
+<img src="./images/Bachman2.jpg">
+</p>
+
+<br/>
+<br/>
 
 ### **3️⃣ Notación PeterChen**
 <p align="center">
 <img src="./images/PeterChen.png">
 </p>
 <br/>
+<br/>
+
+<br/>
+<br/>
+
+<p align="center">
+<img src="./images/PeterChen2.jpg">
+</p>
+
 <br/>
 
 ***
